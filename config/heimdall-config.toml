@@ -1,0 +1,65 @@
+# Heimdall Configuration
+# Documentation: https://wiki.polygon.technology/docs/pos/operate/node/full-node-deployment
+
+# Base configuration
+moniker = "polygon-node"
+seeds = "1500161dd491b67fb1ac81868952be49e2509c9f@52.78.36.216:26656,dd4a3f1750af5765266eaa7fc6d6f51c9e8ff557@3.36.224.80:26656,8ea4f592ad6cc38d7532aff418d1fb97052463af@34.240.245.39:26656,e772e1fb8c3492a9570a377a5eafdb1dc53cd778@54.194.245.5:26656"
+
+# Ethereum configuration
+eth_rpc_url = "http://localhost:8545"
+bor_rpc_url = "http://localhost:8545"
+
+# Tendermint configuration
+[rpc]
+laddr = "tcp://0.0.0.0:26657"
+cors_allowed_origins = []
+cors_allowed_methods = ["HEAD", "GET", "POST"]
+cors_allowed_headers = ["Origin", "Accept", "Content-Type", "X-Requested-With", "X-Server-Time"]
+
+[p2p]
+laddr = "tcp://0.0.0.0:26656"
+external_address = ""
+seeds = ""
+persistent_peers = ""
+addr_book_strict = false
+max_num_inbound_peers = 40
+max_num_outbound_peers = 10
+flush_throttle_timeout = "100ms"
+max_packet_msg_payload_size = 1024
+send_rate = 5120000
+recv_rate = 5120000
+pex = true
+seed_mode = false
+private_peer_ids = ""
+allow_duplicate_ip = false
+handshake_timeout = "20s"
+dial_timeout = "3s"
+
+[mempool]
+recheck = true
+broadcast = true
+size = 5000
+max_txs_bytes = 1073741824
+cache_size = 10000
+
+[consensus]
+wal_file = "data/cs.wal/wal"
+timeout_propose = "3s"
+timeout_propose_delta = "500ms"
+timeout_prevote = "1s"
+timeout_prevote_delta = "500ms"
+timeout_precommit = "1s"
+timeout_precommit_delta = "500ms"
+timeout_commit = "5s"
+skip_timeout_commit = false
+create_empty_blocks = true
+create_empty_blocks_interval = "0s"
+
+[tx_index]
+indexer = "kv"
+
+[instrumentation]
+prometheus = true
+prometheus_listen_addr = ":26660"
+max_open_connections = 3
+namespace = "tendermint"
