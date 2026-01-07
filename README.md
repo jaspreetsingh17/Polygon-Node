@@ -43,7 +43,7 @@ Polygon is a Layer 2 scaling solution for Ethereum. Running a Polygon full node 
 ## Quick Start
 
 ```bash
-git clone https://github.com/your-username/polygon-bor-node.git
+git clone https://github.com/jaspreetsingh17/Polygon-Node.git
 cd polygon-bor-node
 chmod +x scripts/install.sh
 ./scripts/install.sh
